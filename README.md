@@ -1,66 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- ABOUT THE PROJECT -->
+## CRUD Exercise in Laravel 11
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![alt text](image-1.png)
 
-## About Laravel
+Proyek ini adalah sebuah aplikasi web full-stack sederhana yang dibangun untuk mempraktikkan dan mendalami konsep dasar Laravel 11. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Fokus:
+* RUD (Create, Read, Update, Delete) untuk manajemen data mahasiswa
+* Relasi Mahasiswa ke data program studi dan fakultas
+* Arsitektur MVC (Model, View, Controller)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Untuk database MySQL dan PhpMyAdmin akan dijalankan di dalam Docker, konfigurasi dapat dilihat pada file `docker-compose.yaml`. Interface proyek ini menggunakan Tailwind CSS yang di-bundle melalui Vite.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Built With
 
-## Learning Laravel
+[![tech stacks](https://skillicons.dev/icons?i=laravel,mysql,php,html,tailwind,vite,docker,ubuntu,jav&theme=dark)]()
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<!-- GETTING STARTED -->
+## Getting Started
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Panduan ini akan membantu Anda menjalankan salinan proyek ini di mesin lokal Anda.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
 
-## Laravel Sponsors
+Sebelum memulai, pastikan Anda telah menginstal perangkat lunak berikut di sistem Anda.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* PHP 8.2 atau lebih tinggi
 
-### Premium Partners
+* Composer ([Cara Install](https://getcomposer.org/doc/00-intro.md))
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+* Node.js dan NPM ([Cara Install](https://nodejs.org/en/download))
 
-## Contributing
+* Docker ([Cara Install](https://docs.docker.com/engine/install/)) -> opsional, kalian bisa pakai XAMPP/Laragon (Case ku karena pakai Ubuntu, jadi tidak perlu install server apache lagi)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+### Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ikuti langkah-langkah di bawah ini untuk menginstal dan menjalankan aplikasi. (Langkah yang ditampilkan tidak harus dilakukan secara berurutan, feel free untuk melakukan trial and error).
 
-## Security Vulnerabilities
+1. Clone repository
+   ```sh
+   git clone https://github.com/bluga404/crud-exercise
+   ```
+3. Masuk ke direktori project
+   ```sh
+   cd crud-exercise
+   ```
+4. Buat file .env Anda dengan menyalin dari file contoh
+   ```js
+   cp .env.example .env
+   ```
+5. Jalankan container Docker (opsional)
+   ```sh
+   docker compose up -d
+   ```
+6. Install dependensi PHP via Composer
+   ```sh
+   composer install
+   ```
+7. Generate kunci aplikasi Laravel
+   ```sh
+   php artisan key:generate
+   ```
+8. Jalankan migrasi database
+   ```sh
+   php artisan migrate
+   ```
+5. Setup Tailwind CSS
+   ```sh
+   https://tailwindcss.com/docs/installation/using-vite
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<!-- USAGE EXAMPLES -->
+## Usage
 
+Setelah instalasi selesai, Anda perlu menjalankan dua server pengembangan secara bersamaan di dua terminal terpisah.
+
+1. Jalankan Vite Development Server
+   ```sh
+   npm run dev
+   ```
+2. Jalankan Laravel Development Server
+   ```sh
+   php artisan serve
+   ```
+
+_Untuk mengetahui alurnya lebih dalam, please refer dan pelajari ke code-nya langsung_
+_Happy Coding!_
+
+
+<!-- FEATURES -->
+## FEATURES
+1. Home
+![alt text](image-2.png)
+2. Add Student
+![alt text](image-3.png)
+3. Edit Student
+![alt text](image-4.png)
+4. Show Student
+![alt text](image-5.png)
+
+<!-- LICENSE -->
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Tidak ada license, feel free once again to modify :).
